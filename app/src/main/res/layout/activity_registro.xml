@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registro">
+    tools:context="com.example.appittyproyect2.Registro">
 
     <EditText
         android:id="@+id/username"
@@ -19,7 +19,8 @@
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/passReg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView3"
@@ -46,6 +47,7 @@
         android:ems="10"
         android:hint="Coloque la contraseña"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/passReg2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +63,7 @@
         android:ems="10"
         android:hint="Confirme la contraseña:"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +82,8 @@
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/email2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/email2"
@@ -91,6 +95,7 @@
         android:ems="10"
         android:hint="Vuelva a poner su Email:"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/edad"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,26 +111,13 @@
         android:ems="10"
         android:hint="Ponga su dni:"
         android:inputType="text"
+        android:minHeight="48dp"
         android:textColorHint="#AAAAAA"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
-        android:id="@+id/edad"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="Fecha de nacimiento del niño/a/e:"
-        android:inputType="date"
-        android:textColorHint="#AAAAAA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="489dp" />
 
     <Button
         android:id="@+id/borrarData"
@@ -135,7 +127,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="restaurar datos"
+        android:text="REINICIAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/registrar"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,4 +146,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/borrarData"
         app:layout_constraintTop_toBottomOf="@+id/edad" />
+
+    <EditText
+        android:id="@+id/edad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Edad del niño/a/e:"
+        android:inputType="date"
+        android:textColorHint="#AAAAAA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck"
+        tools:layout_editor_absoluteY="489dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

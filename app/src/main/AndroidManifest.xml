@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,43 +9,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppityProyect"
-        tools:targetApi="31">
+        android:theme="@style/Theme.AppittyProyect2"
+        tools:targetApi="33">
         <activity
-            android:name=".Registro"
+            android:name="com.example.appittyproyect2.TablaPuntuacion"
             android:exported="true" />
         <activity
-            android:name=".EmergentePuntos"
+            android:name="com.example.appittyproyect2.Registro"
             android:exported="true" />
         <activity
-            android:name=".tablaPuntuacion"
+            android:name="com.example.appittyproyect2.PagSuma"
             android:exported="true" />
         <activity
-            android:name=".PagAmbas"
+            android:name="com.example.appittyproyect2.PagPrincipal"
             android:exported="true" />
         <activity
-            android:name=".PagResta"
+            android:name="com.example.appittyproyect2.PagLogin"
             android:exported="true" />
         <activity
-            android:name=".PagSuma"
+            android:name="com.example.appittyproyect2.PagAmbas"
             android:exported="true" />
         <activity
-            android:name=".pagLogIn"
+            android:name="com.example.appittyproyect2.EmergentePuntos"
             android:exported="true" />
-        <activity
-            android:name=".PagPrincipal"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppityProyect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
     </application>
-
 </manifest>

@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppityProyect"
+rootProject.name = "AppittyProyect2"
 include(":app")
+ 
