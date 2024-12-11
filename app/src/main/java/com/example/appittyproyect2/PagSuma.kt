@@ -1,12 +1,11 @@
 package com.example.appittyproyect2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import com.example.libraryapp.databinding.ActivityEmergentePuntosBinding
-import com.example.libraryapp.databinding.ActivityPagPrincipalBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.libraryapp.databinding.ActivityPagSumaBinding
 import kotlin.random.Random
 
@@ -36,14 +35,14 @@ class PagSuma : AppCompatActivity() {
         val suma4 = num7 + num8
 
         // Mostrar las sumas en los TextViews
-        binding.suma1.text = "Suma 1: $num1 + $num2 = $suma1"
-        binding.suma2.text = "Suma 2: $num3 + $num4 = $suma2"
-        binding.suma3.text = "Suma 3: $num5 + $num6 = $suma3"
-        binding.suma4.text = "Suma 4: $num7 + $num8 = $suma4"
+        binding.suma1.text = "Suma 1: $num1 + $num2 = ?"
+        binding.suma2.text = "Suma 2: $num3 + $num4 = ?"
+        binding.suma3.text = "Suma 3: $num5 + $num6 = ?"
+        binding.suma4.text = "Suma 4: $num7 + $num8 = ?"
 
         // Volver al inicio
         binding.inicio.setOnClickListener {
-            val intent = Intent(this, ActivityPagPrincipalBinding::class.java)
+            val intent = Intent(this, PagPrincipal::class.java)
             startActivity(intent)
         }
 
@@ -59,7 +58,8 @@ class PagSuma : AppCompatActivity() {
             Toast.makeText(this, "Puntos obtenidos: $puntos", Toast.LENGTH_LONG).show()
 
             // Navegar a la actividad de puntos
-            val intent = Intent(this, ActivityEmergentePuntosBinding::class.java)
+            val intent = Intent(this, EmergentePuntos::class.java)
+            intent.putExtra("puntos", puntos)  // Enviar puntaje a la siguiente actividad
             startActivity(intent)
         }
     }
@@ -68,13 +68,19 @@ class PagSuma : AppCompatActivity() {
     private fun checkAnswer(answerField: EditText, correctAnswer: Int) {
         val userAnswer = answerField.text.toString().toIntOrNull()
 
-        if (userAnswer != null && userAnswer == correctAnswer) {
-            // Respuesta correcta
-            answerField.setTextColor(resources.getColor(android.R.color.holo_green_dark)) // Verde
-            puntos += 25  // Incrementar los puntos
+        if (userAnswer != null) {
+            if (userAnswer == correctAnswer) {
+                // Respuesta correcta
+                answerField.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))  // Verde
+                puntos += 25  // Incrementar los puntos
+            } else {
+                // Respuesta incorrecta
+                answerField.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))  // Rojo
+            }
         } else {
-            // Respuesta incorrecta
-            answerField.setTextColor(resources.getColor(android.R.color.holo_red_dark)) // Rojo
+            // Si el campo está vacío o la entrada no es válida, marcarlo en rojo
+            answerField.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))  // Rojo
+            Toast.makeText(this, "Por favor, ingresa un número válido", Toast.LENGTH_SHORT).show()
         }
     }
 }

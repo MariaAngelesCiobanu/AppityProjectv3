@@ -38,13 +38,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
+    kapt {
+        correctErrorTypes = true
+    }
 
+
+}
 dependencies {
     implementation("androidx.databinding:databinding-adapters:8.7.3")
-    implementation("androidx.databinding:adapters:3.2.0-alpha11")
     implementation("com.google.android.ads:mediation-test-suite:3.0.0")
-    val room_version = "2.5.0"
+    implementation("androidx.compose.foundation:foundation-android:1.7.5")
+    implementation("androidx.compose.material3:material3-android:1.3.1")
+    val room_version = "2.5.2"
     implementation("androidx.room:room-runtime:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
 
@@ -56,5 +61,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
 
 

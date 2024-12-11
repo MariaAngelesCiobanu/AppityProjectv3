@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import androidx.databinding.adapters.Converters
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters

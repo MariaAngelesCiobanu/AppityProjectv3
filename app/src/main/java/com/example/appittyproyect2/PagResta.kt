@@ -2,18 +2,17 @@ package com.example.appittyproyect2
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.libraryapp.R
-import com.example.libraryapp.databinding.ActivityEmergentePuntosBinding
-import com.example.libraryapp.databinding.ActivityPagPrincipalBinding
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.libraryapp.databinding.ActivityPagRestaBinding
 import kotlin.random.Random
 
 // Aquí por cada respuesta correcta se suman 25 puntos en un contador, y las respuestas se marcan en verde o rojo
 class PagResta : AppCompatActivity() {
     private lateinit var binding: ActivityPagRestaBinding
-
     var puntos = 0  // Contador de puntos
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +22,7 @@ class PagResta : AppCompatActivity() {
 
         // Configura el evento para navegar al inicio
         binding.inicio.setOnClickListener {
-            val intent = Intent(this, ActivityPagPrincipalBinding::class.java)
+            val intent = Intent(this, PagPrincipal::class.java)
             startActivity(intent)
         }
 
@@ -33,7 +32,7 @@ class PagResta : AppCompatActivity() {
             checkAnswers()
 
             // Navegar a la actividad de puntos
-            val intent = Intent(this, ActivityEmergentePuntosBinding::class.java)
+            val intent = Intent(this, EmergentePuntos::class.java)
             intent.putExtra("puntos", puntos)  // Enviar el puntaje a la siguiente actividad
             startActivity(intent)
         }
@@ -55,10 +54,10 @@ class PagResta : AppCompatActivity() {
         val resta4 = num7 - num8
 
         // Mostrar las restas en los TextViews
-        binding.suma1.text = "Resta 1: $num1 - $num2 = $resta1"
-        binding.suma2.text = "Resta 2: $num3 - $num4 = $resta2"
-        binding.suma3.text = "Resta 3: $num5 - $num6 = $resta3"
-        binding.suma4.text = "Resta 4: $num7 - $num8 = $resta4"
+        binding.suma1.text = "Resta 1: $num1 - $num2 = ?"
+        binding.suma2.text = "Resta 2: $num3 - $num4 = ?"
+        binding.suma3.text = "Resta 3: $num5 - $num6 = ?"
+        binding.suma4.text = "Resta 4: $num7 - $num8 = ?"
     }
 
     private fun checkAnswers() {
@@ -68,33 +67,27 @@ class PagResta : AppCompatActivity() {
         val resta3Correcta = 7
         val resta4Correcta = 4
 
-        // Verificar respuestas
-        if (binding.answer1.text.toString().toIntOrNull() == resta1Correcta) {
-            puntos += 25
-            binding.suma1.setTextColor(Color.GREEN)  // Respuesta correcta, texto en verde
-        } else {
-            binding.suma1.setTextColor(Color.RED)  // Respuesta incorrecta, texto en rojo
+        // Verificar respuestas y actualizar puntos y colores
+        checkAnswer(binding.answer1, resta1Correcta, binding.suma1)
+        checkAnswer(binding.answer2, resta2Correcta, binding.suma2)
+        checkAnswer(binding.answer3, resta3Correcta, binding.suma3)
+        checkAnswer(binding.answer4, resta4Correcta, binding.suma4)
+    }
+
+    // Función que verifica una respuesta, actualiza los puntos y cambia el color
+    private fun checkAnswer(answerField: EditText, correctAnswer: Int, textView: TextView) {
+        val userAnswer = answerField.text.toString().toIntOrNull()
+        if (userAnswer == null) {
+            // Si no hay una respuesta válida, muestra un mensaje
+            Toast.makeText(this, "Por favor, ingresa una respuesta válida", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        if (binding.answer2.text.toString().toIntOrNull() == resta2Correcta) {
+        if (userAnswer == correctAnswer) {
             puntos += 25
-            binding.suma2.setTextColor(Color.GREEN)
+            textView.setTextColor(Color.GREEN)  // Respuesta correcta, texto en verde
         } else {
-            binding.suma2.setTextColor(Color.RED)
-        }
-
-        if (binding.answer3.text.toString().toIntOrNull() == resta3Correcta) {
-            puntos += 25
-            binding.suma3.setTextColor(Color.GREEN)
-        } else {
-            binding.suma3.setTextColor(Color.RED)
-        }
-
-        if (binding.answer4.text.toString().toIntOrNull() == resta4Correcta) {
-            puntos += 25
-            binding.suma4.setTextColor(Color.GREEN)
-        } else {
-            binding.suma4.setTextColor(Color.RED)
+            textView.setTextColor(Color.RED)  // Respuesta incorrecta, texto en rojo
         }
     }
 }

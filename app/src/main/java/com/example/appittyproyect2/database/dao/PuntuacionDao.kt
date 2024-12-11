@@ -1,9 +1,10 @@
 package com.example.appittyproyect2.database.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.appittyproyect2.model.Puntuacion
-
+@Dao
 interface PuntuacionDao {
     @Query("SELECT * FROM Puntuacion")
     fun list(): List<Puntuacion>

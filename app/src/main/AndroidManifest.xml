@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppittyProyect2"
         tools:targetApi="33">
+
+        <!-- Actividad Principal -->
+        <activity
+            android:name="com.example.appittyproyect2.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Otras actividades -->
         <activity
             android:name="com.example.appittyproyect2.TablaPuntuacion"
             android:exported="true" />
@@ -32,10 +45,6 @@
         <activity
             android:name="com.example.appittyproyect2.EmergentePuntos"
             android:exported="true" />
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
     </application>
+
 </manifest>

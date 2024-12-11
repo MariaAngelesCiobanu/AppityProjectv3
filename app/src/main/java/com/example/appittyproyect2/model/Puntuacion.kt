@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import androidx.databinding.adapters.Converters
+import com.example.appittyproyect2.model.Converters
 import java.util.Date
 
 
@@ -31,7 +31,8 @@ data class Puntuacion(
     @ColumnInfo(name = "NIF") val nif: String,
     @ColumnInfo(name = "idEjercicio") val idEjercicio: Int,
     @ColumnInfo(name = "puntuacion") val puntuacion: Int,
-    @ColumnInfo(name = "fecha") val fecha: Date // Room usará el conversor automáticamente
+    @ColumnInfo(name = "fecha") val fecha: String // Room usará el conversor automáticamente
 )
+
 
 

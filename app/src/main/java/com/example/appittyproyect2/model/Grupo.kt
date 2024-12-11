@@ -2,7 +2,6 @@ package com.example.appittyproyect2.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.databinding.adapters.Converters
 
 import androidx.room.PrimaryKey
 

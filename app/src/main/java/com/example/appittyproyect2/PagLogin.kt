@@ -1,15 +1,10 @@
 package com.example.appittyproyect2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.libraryapp.databinding.ActivityPagAmbasBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.libraryapp.databinding.ActivityPagLoginBinding
-import com.example.libraryapp.databinding.ActivityRegistroBinding
-import com.example.libraryapp.databinding.ActivityPagPrincipalBinding
-import com.example.libraryapp.databinding.ActivityPagRestaBinding
-import com.example.libraryapp.databinding.ActivityPagSumaBinding
 
 class PagLogin : AppCompatActivity() {
     private lateinit var binding: ActivityPagLoginBinding
@@ -23,43 +18,52 @@ class PagLogin : AppCompatActivity() {
         val edad = intent.getStringExtra("edad")?.toIntOrNull()
 
         // Asegurarse de que la edad no sea nula antes de continuar
-        if (edad != null) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+        if (edad == null) {
+            Toast.makeText(this, "Edad no válida o no proporcionada", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        // Configura el evento para navegar a la actividad correspondiente según la edad
+        // Configura los eventos para navegar a las actividades correspondientes según la edad
         binding.sumaBoton.setOnClickListener {
-            if (edad == 3 || edad == 4) {
-                val intent = Intent(this, ActivityPagSumaBinding::class.java)
+            if (isEdadValida(edad)) {
+                val intent = Intent(this, PagSuma::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Lo siento, no tienes la edad para acceder a esta actividad", Toast.LENGTH_SHORT).show()
+                mostrarToastEdadInvalida()
             }
         }
 
         binding.restasBoton.setOnClickListener {
-            if (edad == 3 || edad == 4) {
-                val intent = Intent(this, ActivityPagRestaBinding::class.java)
+            if (isEdadValida(edad)) {
+                val intent = Intent(this, PagResta::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Lo siento, no tienes la edad para acceder a esta actividad", Toast.LENGTH_SHORT).show()
+                mostrarToastEdadInvalida()
             }
         }
 
         binding.ambasBoton.setOnClickListener {
-            if (edad != null) {
-                if (edad > 3) {
-                    val intent = Intent(this, ActivityPagAmbasBinding::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, "Lo siento, no tienes la edad para acceder a esta actividad", Toast.LENGTH_SHORT).show()
-                }
+            if (edad > 3) {
+                val intent = Intent(this, PagAmbas::class.java)
+                startActivity(intent)
+            } else {
+                mostrarToastEdadInvalida()
             }
         }
 
         binding.inicioBot.setOnClickListener {
-            val intent = Intent(this, ActivityPagPrincipalBinding::class.java)
+            val intent = Intent(this, PagPrincipal::class.java)
             startActivity(intent)
         }
+    }
+
+    // Método para verificar si la edad es válida
+    private fun isEdadValida(edad: Int): Boolean {
+        return edad == 3 || edad == 4
+    }
+
+    // Método para mostrar un mensaje Toast con edad inválida
+    private fun mostrarToastEdadInvalida() {
+        Toast.makeText(this, "Lo siento, no tienes la edad para acceder a esta actividad", Toast.LENGTH_SHORT).show()
     }
 }
